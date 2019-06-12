@@ -19,31 +19,52 @@
  */
 global inherited sharing class PaymentService_CustomGateway extends FDService.PaymentService {
 
+    public final String BASE_URL = 'https://api.stripe.com/v1';
+
     public override FDService.EPayResponse purchase(FDService.EPayRequest request) {
-        return FDService.EPayResponse.getInstance();
+        HttpRequest req = new HttpRequest();
+        req.setTimeout(120000);
+        req.setEndpoint(BASE_URL+'/charges');
+        req.setMethod('POST');
+        req.setHeader('Authorization','Bearer sk_test_OXQGnQNQhjnQaJbWBUAYfmeB00HDmZLJGH');
+        req.setHeader('Content-Type', 'application/x-www-form-urlencoded');
+        String payload = 'source='+request.paymentMethod.paymentMethodToken+'&amount='+request.amount+'&currency='+request.currencyISOCode+'&description="'+request.orderId+'"';
+        req.setBody(payload);
+        Http http = new Http();
+        HttpResponse resp = http.send(req);
+        FDService.EPayResponse responseObj = FDService.EPayResponse.getInstance();
+        responseObj.transactions = new List<FDService.EPayTransaction>();
+        responseObj.errors = new List<FDService.Error>();
+        FDService.EPayTransaction transactionObj = new FDService.EPayTransaction();
+        Map<String, Object> responseBody = ( Map<String, Object> ) JSON.deserializeUntyped(resp.getBody());
+        if (resp.getStatusCode() == 200) {
+            transactionObj.transaction_type = ( String ) responseBody.get('object');
+            transactionObj.currency_code = ( String ) responseBody.get('currency');
+            transactionObj.payment_method_token = ( String ) responseBody.get('payment_method');
+            transactionObj.description = ( String ) responseBody.get('description');
+            transactionObj.amount = ( Integer ) responseBody.get('amount');
+            if ( ( String ) responseBody.get('status') == 'succeeded' ) {
+                transactionObj.succeeded = true;
+            }
+        }
+        else {
+            transactionObj.succeeded = false;
+            transactionObj.amount = 0;
+            Map<String,Object> errorSubObj = (Map<String,Object>)responseBody.get('error');
+            transactionObj.error_code = (String)errorSubObj.get('code');
+            transactionObj.error_detail = (String)errorSubObj.get('message');
+            responseObj.errors.add(new FDService.Error((String)errorSubObj.get('code'),(String)errorSubObj.get('message')));
+            transactionObj.errors = responseObj.errors;
+        }
+        responseObj.http_status_code = resp.getStatusCode();
+        responseObj.transactions.add(transactionObj);
+        return responseObj;
     }
 
-    public override FDService.EPayResponse verify(FDService.EPayRequest request) {
-        return FDService.EPayResponse.getInstance();
-    }
 
-    public override FDService.EPayResponse deletePaymentMethod(FDService.EPayRequest request ) {
-        return FDService.EPayResponse.getInstance();
-    }
-
-    public override FDService.EPayResponse capture(FDService.EPayRequest request) {
-        return FDService.EPayResponse.getInstance();
-    }
-
-    public override FDService.EPayResponse authorize(FDService.EPayRequest request ) {
-        return FDService.EPayResponse.getInstance();
-    }
 
     public override FDService.EPayResponse credit(FDService.EPayRequest request ) {
         return FDService.EPayResponse.getInstance();
     }
 
-    public override FDService.EPayResponse generalCredit(FDService.EPayRequest request ) {
-        return FDService.EPayResponse.getInstance();
-    }
 }

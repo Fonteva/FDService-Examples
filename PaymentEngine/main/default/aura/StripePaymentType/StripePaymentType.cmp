@@ -1,0 +1,29 @@
+<aura:component description="StripePaymentType" implements="OrderApi:CustomPaymentTypeInterface" access="global" controller="ProcessStripePayment">
+	<ltng:require scripts="{!join(',',$Resource.Framework__UrlUtil,$Resource.Framework__ActionUtils)}" afterScriptsLoaded="{!c.doInit}"/>
+	<aura:attribute name="creditCardObj" type="Map" default="{}"/>
+	<aura:registerEvent name="ButtonToggleIndicatorEvent" type="Framework:ButtonToggleIndicatorEvent"/>
+	<aura:registerEvent name="StopIndicatorEvent" type="OrderApi:StopIndicatorEvent"/>
+	<div class="slds-col slds-grid">
+		<div class="slds-size--1-of-1 slds-m-bottom-x--small" data-name="fullNameWrapper" aura:id="fullNameWrapper">
+			<Framework:InputFields qaData='{"type" : "input", "name": "full_name"}' aura:id="full_name" fieldType="string" isRequired="true" label="Name" value="{!v.creditCardObj}" styleClasses="first-name-computed-styles" labelStyleClasses="first-name-computed-label-styles"/>
+		</div>
+	</div>
+	<div class="slds-col slds-grid">
+		<div class="slds-size--1-of-1 slds-m-bottom-x--small" data-name="fullNameWrapper" aura:id="fullNameWrapper">
+			<Framework:InputFields qaData='{"type" : "input", "name": "cc"}' aura:id="cc" fieldType="string" isRequired="true" label="Credit Card" value="{!v.creditCardObj}" styleClasses="first-name-computed-styles" labelStyleClasses="first-name-computed-label-styles"/>
+		</div>
+	</div>
+	<div class="slds-col slds-grid slds-size--1-of-1">
+		<div class="slds-m-bottom-x--small slds-col">
+			<Framework:InputFields qaData='{"type" : "input", "name": "month"}' aura:id="month" fieldType="picklist" label="Exp Month" value="{!v.creditCardObj}" isRequired="true"/>
+		</div>
+		<div class="slds-m-bottom-x--small slds-p-horizontal--small slds-col">
+			<Framework:InputFields qaData='{"type" : "input", "name": "year"}' aura:id="year" fieldType="picklist" label="Exp Year" value="{!v.creditCardObj}" isRequired="true"/>
+		</div>
+	</div>
+	<div class="slds-col slds-grid">
+		<div class="slds-size--1-of-1 slds-m-bottom-x--small slds-text-align_center" data-name="fullNameWrapper" aura:id="fullNameWrapper">
+				<Framework:Button onClickAction="{!c.processPayment}" qaData='{"type" : "button", "name": "processBtn"}' aura:id="processBtn" group="paymentButtons" label="Process Payment"/>
+		</div>
+	</div>
+</aura:component>
