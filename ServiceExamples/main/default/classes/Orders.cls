@@ -92,7 +92,7 @@ public inherited sharing class Orders {
 
         //This will add all of the items to the order and set the correct parent child relationships. For the above
         //example it will create a tree depth of 3 based on the parent/child relationship. This will occur in a single
-        //DML. All taxes/required packaage items will be calculated before anything is pushed to the database. This
+        //DML. All taxes/required package items will be calculated before anything is pushed to the database. This
         //allows us to reduce the number of times the triggers execute to one time.
         lines = orderService.addItemsToOrder(lines);
     }
