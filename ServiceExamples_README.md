@@ -10,3 +10,7 @@ overwriting/extending and just generally using our services platform.
     it will also pre-calculate tax lines and any required package items to add. All of the above will be done in a single
     DML. In previous iterations of the platform this would be completed by executing the Order Line triggers upto 8 times 
     granted each item was taxable and had package items.
+    
+    In the method [addItemsToOrder](https://github.com/Fonteva/FDService-Examples/blob/master/ServiceExamples/main/default/classes/Orders.cls#L67)
+    multiple lines are added and each are connected via a `parentForeignKey` entry. For each child to relate to the parent, provide the 
+    parent's `foreignKey`. This will allow the platform to parent the records correctly.
