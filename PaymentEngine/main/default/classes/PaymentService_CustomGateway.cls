@@ -38,6 +38,7 @@ global inherited sharing class PaymentService_CustomGateway extends FDService.Pa
         FDService.EPayTransaction transactionObj = new FDService.EPayTransaction();
         Map<String, Object> responseBody = ( Map<String, Object> ) JSON.deserializeUntyped(resp.getBody());
         if (resp.getStatusCode() == 200) {
+            transactionObj.token = ( String )responseBody.get('id');
             transactionObj.transaction_type = ( String ) responseBody.get('object');
             transactionObj.currency_code = ( String ) responseBody.get('currency');
             transactionObj.payment_method_token = ( String ) responseBody.get('payment_method');

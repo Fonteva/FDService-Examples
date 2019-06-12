@@ -21,6 +21,7 @@ public with sharing class ProcessStripePayment {
 
     @AuraEnabled
     public static Object processStrPayment(String record,String paymentMethodToken, String currencyISOCode) {
+        FDService.ImplementationOverride.overrideContextImplementation('PaymentEngine', 'Payment_Service', PaymentService_CustomGateway.class.getName());
         FDService.PaymentResponse response = FDService.PaymentResponse.getInstance();
         try{
             FDService.PaymentRequest paymentDetailsObj = FDService.PaymentRequest.getInstance();
