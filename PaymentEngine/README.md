@@ -9,3 +9,13 @@ This section will outline different ways to to use the Payment Engine.
     outline what those fields are. This is also how Level 2/Level 3 processing is supported. To do this look at 
     the class [PaymentService_GatewaySpecificFields](classes/PaymentService_GatewaySpecificFields.cls).<br/>
     This class should extend the FDService.PaymentService and overwrite all methods that need these specific fields.
+    These methods will be auto called when the Fonteva Platform calls them during the normal purchase process.
+1. ##### Custom Gateways That Spreedly Does Not Support
+    Some gateways are not supported by Spreedly and this will requires the ability to connect the Fonteva Platform 
+    to the gateway. The same class would be overwritten as for gateway specific fields however more methods 
+    would need to be updated. All methods that would be required will need to be updated. As long as the response
+    from each method is in the form of FDService.EPayResponse the rest of the platform should create all supporting
+    records. Inside the FDService.EPayResponse there is a object that is FDService.EPayTransaction, this object
+    is where the response from the gateway will be mapped to. As control is returned to the Fonteva Platform the 
+    FDService.EPayTransaction will be mapped to EPayment records which will drive the Receipt/Transactions etc.
+    ([PaymentService_CustomGateway](classes/PaymentService_CustomGateway.cls)) 
