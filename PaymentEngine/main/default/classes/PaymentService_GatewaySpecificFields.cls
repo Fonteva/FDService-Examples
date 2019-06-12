@@ -17,7 +17,7 @@
  * Project: FDService-Examples
  * Class: PaymentService
  */
-global inherited sharing class PaymentService_GatewaySpecificFields extends FDService.PaymentService_GatewaySpecificFields {
+global inherited sharing class PaymentService_GatewaySpecificFields extends FDService.PaymentService {
 
     public override FDService.EPayResponse purchase(FDService.EPayRequest request) {
         FDService.EPayRequest.RequestObject requestObject = new FDService.EPayRequest.RequestObject();

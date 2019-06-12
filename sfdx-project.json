@@ -3,6 +3,14 @@
     {
       "path": "PaymentEngine",
       "default": true
+    },
+    {
+      "path": "ServiceExamples",
+      "default": false
+    },
+    {
+      "path": "WrapperOverrides",
+      "default": false
     }
   ],
   "namespace": "",
