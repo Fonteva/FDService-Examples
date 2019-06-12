@@ -17,7 +17,7 @@
  * Project: FDService-Examples
  * Class: PaymentService
  */
-global without sharing class PaymentService extends FDService.PaymentService {
+global without sharing class PaymentService_GatewaySpecificFields extends FDService.PaymentService_GatewaySpecificFields {
 
     public override FDService.EPayResponse purchase(FDService.EPayRequest request) {
         FDService.EPayRequest.RequestObject requestObject = new FDService.EPayRequest.RequestObject();
