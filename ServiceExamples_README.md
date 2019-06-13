@@ -14,3 +14,7 @@ overwriting/extending and just generally using our services platform.
     In the method [addItemsToOrder](https://github.com/Fonteva/FDService-Examples/blob/master/ServiceExamples/main/default/classes/Orders.cls#L67)
     multiple lines are added and each are connected via a `parentForeignKey` entry. For each child to relate to the parent, provide the 
     parent's `foreignKey`. This will allow the platform to parent the records correctly.
+2. ##### Search Request Examples
+    As part of the new services platform we have introduced a new way to query records from the database. The goal is to make
+    this easier and more readable. In this example class you will be able see many different ways to use the `FDService.SearchRequest`
+    object. [SearchRequestExamples](ServiceExamples/main/default/classes/SearchRequestExamples)
