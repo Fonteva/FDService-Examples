@@ -1,30 +1,24 @@
 ({
-    buildYearOptions : function(component) {
-        var options = [];
-        for (var i = 0 ; i < 20 ; i++) {
-            var year = new Date().getFullYear() + i;
-            var option = {label : year,value : year};
-            options.push(option);
-        }
-        component.find('year').setSelectOptions(options,options[0].value);
-    },
-    buildMonthOptions : function(component) {
-        var options = [];
-        for (var i = 1 ; i < 13 ; i++) {
-            var monthOption = i;
-            if (i < 10) {
-                monthOption = '0'+monthOption;
-            }
-            var option = {label : monthOption.toString(),value : monthOption.toString()};
-            options.push(option);
-        }
-        component.find('month').setSelectOptions(options,options[0].value);
-    },
     toggleButtonEvent : function(buttonGroup) {
         var compEvent = $A.get('e.Framework:ButtonToggleIndicatorEvent');
         compEvent.setParams({
             group : buttonGroup
         });
         compEvent.fire();
+    },
+    processServerPayment : function(component,tokenId) {
+        var paymentObj = {
+            record: component.get('v.customPaymentTypeObj.paymentObj.paymentObjId'),
+            paymentMethodToken: tokenId,
+            currencyISOCode: component.get('v.customPaymentTypeObj.paymentObj.currencyISOCode'),
+        }
+        var self = this;
+        ActionUtils.executeAction(this, component, 'c.processStrPayment', paymentObj)
+            .then(function (result) {
+                window.location = '/' + result.receiptId;
+            })
+            .catch(function (result) {
+                self.toggleButtonEvent('paymentButtons');
+            });
     }
 });
