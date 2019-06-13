@@ -33,4 +33,15 @@ public inherited sharing class SearchRequestExamples {
                 FDService.SearchRequest.getInstance().selectById(itemId)
         );
     }
+
+    public static List<FDService.Item> filterItem(Id itemId) {
+        //The filter method will allow sending an arbitrary number of parameters to the SOQL where clause. You
+        //just need to provide the token replacement tags as show below. The platform will take care of all of the
+        //escaping for you.
+        return FDService.ItemService.getInstance().get(
+                FDService.SearchRequest.getInstance()
+                        .filter('OrderApi__Is_Active__c = {0} AND Id IN ({1})',
+                            new List<Object>{true,new List<String>{itemId}})
+        );
+    }
 }
