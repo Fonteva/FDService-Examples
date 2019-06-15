@@ -17,7 +17,32 @@
  * Project: FDService-Examples
  * Class: ProcessStripePayment
  */
-public with sharing class ProcessStripePayment {
+public inherited sharing class ProcessStripePayment {
+
+    public ProcessStripePayment() {
+
+    }
+
+    public PageReference processPayment() {
+        try{
+        Id recordId = Framework.PageUtils.getIdParam('recordId');
+        String clientSecret = Framework.PageUtils.getParam('client_secret');
+        String source = Framework.PageUtils.getParam('source');
+        Map<String,Object> sourceMap = PaymentService_CustomGateway.getSourceObj(source);
+        String status = (String)sourceMap.get('status');
+            if (status.equalsIgnoreCase('chargeable')) {
+                FDService.PaymentResponse response = (FDService.PaymentResponse)processStrPayment(recordId,source,'USD');
+                PageReference ref = new PageReference('/'+response.receiptId);
+                return ref;
+            }
+        }
+        catch (Exception e) {
+            Framework.SyslogError.log(e);
+            return null;
+        }
+
+        return null;
+    }
 
     @AuraEnabled
     public static Object processStrPayment(String record,String paymentMethodToken, String currencyISOCode) {

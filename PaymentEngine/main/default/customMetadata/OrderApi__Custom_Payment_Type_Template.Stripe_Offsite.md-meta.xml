@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>OrderApi__Available_for_Recurring_Payments__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>OrderApi__Is_Enabled__c</field>
@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>OrderApi__Supports_Multiple_Order_Payments__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>    
     <values>
         <field>OrderApi__Lightning_Component_for_Checkout__c</field>

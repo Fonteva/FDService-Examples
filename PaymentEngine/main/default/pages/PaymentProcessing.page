@@ -1,6 +1,78 @@
-<!--
- - Created by gparmar on 2019-06-13.
- -->
+<apex:page showHeader="false"
+					 sidebar="false"
+					 standardStylesheets="false"
+					 applyBodyTag="false"
+					 applyHtmlTag="false"
+					 cache="false"
+					 docType="html-5.0"
+					 action="{!processPayment}"
+					 controller="ProcessStripePayment">
 
-<apex:page id="PaymentProcessing">
+	<html>
+	<head>
+		<title>Processing Payment</title>
+	</head>
+	<body>
+	<script type="text/javascript">
+      var polyfilter_scriptpath = "{!URLFOR($Resource.OrderApi__app,'polyfills/filters/')}";
+	</script>
+
+	<style>
+		#form_output {
+			margin-top: 20px;
+			margin-bottom: 10px;
+		}
+		#ds_modal{
+			visibility:hidden;
+		}
+		.spinner_paymentprocessing {
+			margin: 20px auto 0;
+			width: 70px;
+			text-align: center;
+		}
+		.spinner_paymentprocessing > div {
+			width: 18px;
+			height: 18px;
+			background-color: #333;
+
+			border-radius: 100%;
+			display: inline-block;
+			-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+			animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+		}
+		.spinner_paymentprocessing .bounce1 {
+			-webkit-animation-delay: -0.32s;
+			animation-delay: -0.32s;
+		}
+		.spinner_paymentprocessing .bounce2 {
+			-webkit-animation-delay: -0.16s;
+			animation-delay: -0.16s;
+		}
+		@-webkit-keyframes sk-bouncedelay {
+			0%, 80%, 100% { -webkit-transform: scale(0) }
+			40% { -webkit-transform: scale(1.0) }
+		}
+		@keyframes sk-bouncedelay {
+			0%, 80%, 100% {
+				-webkit-transform: scale(0);
+				transform: scale(0);
+			} 40% {
+					-webkit-transform: scale(1.0);
+					transform: scale(1.0);
+				}
+		}
+	</style>
+	<h1 style="text-align: center;">Payment Processing</h1>
+	<div class="spinner_paymentprocessing">
+		<div class="bounce1"></div>
+		<div class="bounce2"></div>
+		<div class="bounce3"></div>
+	</div>
+	<!-- Needed by EmVars helper in _emerald.js -->
+	<div id="emvars"></div>
+	<!-- Needed by BSE.Mq.screen() helper in utils.js -->
+	<div id="mq"></div>
+	</body>
+	</html>
+
 </apex:page>

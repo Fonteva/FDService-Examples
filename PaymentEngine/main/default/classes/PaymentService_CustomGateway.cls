@@ -21,6 +21,18 @@ global inherited sharing class PaymentService_CustomGateway extends FDService.Pa
 
     public final static String BASE_URL = 'https://api.stripe.com/v1';
 
+    public static Map<String,Object> getSourceObj(String source) {
+        HttpRequest req = new HttpRequest();
+        req.setTimeout(120000);
+        req.setEndpoint(BASE_URL+'/sources/'+source);
+        req.setMethod('POST');
+        req.setHeader('Authorization','Bearer sk_test_OXQGnQNQhjnQaJbWBUAYfmeB00HDmZLJGH');
+        Http http = new Http();
+        HttpResponse resp = http.send(req);
+        Map<String, Object> responseBody = ( Map<String, Object> ) JSON.deserializeUntyped(resp.getBody());
+        return responseBody;
+    }
+
     public override FDService.EPayResponse purchase(FDService.EPayRequest request) {
         HttpRequest req = new HttpRequest();
         req.setTimeout(120000);
