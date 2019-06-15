@@ -21,3 +21,6 @@ This section will outline different ways to to use the Payment Engine.
     ([PaymentService_CustomGateway](PaymentEngine/main/default/classes/PaymentService_CustomGateway.cls)) This example
     is a fully operation integration with Stripe. It will allow purchase via our payment page and
     all for processing refunds. It will work with Scheduled Payments internally without any modification.
+    
+    This example of custom gateway also supports the AliPay/WeChat flow for Stripe. A custom payment
+    type example is also included to show that flow.
