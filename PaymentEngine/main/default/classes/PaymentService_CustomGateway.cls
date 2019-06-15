@@ -19,7 +19,7 @@
  */
 global inherited sharing class PaymentService_CustomGateway extends FDService.PaymentService {
 
-    public final String BASE_URL = 'https://api.stripe.com/v1';
+    public final static String BASE_URL = 'https://api.stripe.com/v1';
 
     public override FDService.EPayResponse purchase(FDService.EPayRequest request) {
         HttpRequest req = new HttpRequest();

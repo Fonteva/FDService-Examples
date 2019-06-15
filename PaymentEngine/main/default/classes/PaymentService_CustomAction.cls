@@ -15,10 +15,8 @@
 
 /* 
  * Project: FDService-Examples
- * Class: SalesOrderLine
+ * Class: PaymentService_CustomAction
  */
-global inherited sharing class SalesOrderLine {
+global inherited sharing class PaymentService_CustomAction extends FDService.PaymentService{
 
-    @AuraEnabled
-    global String extendingField;
 }

@@ -1,0 +1,12 @@
+<aura:component description="StripeOffsitePayment" implements="OrderApi:CustomPaymentTypeInterface" access="global" controller="ProcessStripePayment">
+	<ltng:require scripts="{!join(',',$Resource.Framework__UrlUtil,$Resource.Framework__ActionUtils)}"/>
+	<aura:attribute name="creditCardObj" type="Map" default="{}"/>
+	<aura:registerEvent name="ButtonToggleIndicatorEvent" type="Framework:ButtonToggleIndicatorEvent"/>
+	<aura:registerEvent name="StopIndicatorEvent" type="OrderApi:StopIndicatorEvent"/>
+
+	<div class="slds-col slds-grid">
+		<div class="slds-size--1-of-1 slds-m-bottom-x--small slds-text-align_center" data-name="fullNameWrapper" aura:id="fullNameWrapper">
+			<Framework:Button onClickAction="{!c.processPayment}" qaData='{"type" : "button", "name": "processBtn"}' aura:id="processBtn" group="paymentButtons" label="Process Payment"/>
+		</div>
+	</div>
+</aura:component>
