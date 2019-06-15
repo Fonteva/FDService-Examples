@@ -23,7 +23,9 @@ This section will outline different ways to to use the Payment Engine.
     all for processing refunds. It will work with Scheduled Payments internally without any modification.
     
     This example of custom gateway also supports the AliPay/WeChat flow for Stripe. A custom payment
-    type example is also included to show that flow.
+    type example is also included to show that flow. This custom payment type includes everything just needs to be added
+    to the store. 
+    ![](GifExamples/AliPay.gif)
 
 ## License
  
