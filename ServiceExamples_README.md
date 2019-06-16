@@ -36,7 +36,8 @@ overwriting/extending and just generally using our services platform.
     
     ```
     Due to keyword limitations `update` is changed to `mutate` and `delete` is `destroy`. The `WrapperBase` instance 
-    above can be replaced with the SObject wrapper class as they all extend `WrapperBase`. 
+    above can be replaced with the SObject wrapper class as they all extend `WrapperBase`. Please refer to [EPayment example](ServiceExamples/main/default/classes/EPaymentCRUD.cls)
+    for usage information.
 3. ##### Search Request Examples
     As part of the new services platform we have introduced a new way to query records from the database. The goal is to make
     this easier and more readable. In this example class you will be able see many different ways to use the `FDService.SearchRequest`
