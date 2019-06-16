@@ -41,7 +41,7 @@ overwriting/extending and just generally using our services platform.
 3. ##### Search Request Examples
     As part of the new services platform we have introduced a new way to query records from the database. The goal is to make
     this easier and more readable. In this example class you will be able see many different ways to use the `FDService.SearchRequest`
-    object. [SearchRequestExamples](ServiceExamples/main/default/classes/SearchRequestExamples.cls)
+    object. [SearchRequest Examples](ServiceExamples/main/default/classes/SearchRequestExamples.cls)
 
 ## License
  
