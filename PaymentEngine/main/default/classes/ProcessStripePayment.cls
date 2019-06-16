@@ -83,16 +83,9 @@ public inherited sharing class ProcessStripePayment {
     public static Object createSource(String epaymentId,Decimal total,String currencyISOCode) {
         try {
             String baseUrl =  Url.getOrgDomainUrl().toExternalForm()+ Page.PaymentProcessing.getUrl()+'?recordId='+epaymentId;
-            HttpRequest req = new HttpRequest();
-            req.setTimeout(120000);
-            req.setEndpoint(PaymentService_CustomGateway.BASE_URL+'/sources');
-            req.setMethod('POST');
-            req.setHeader('Authorization','Bearer sk_test_OXQGnQNQhjnQaJbWBUAYfmeB00HDmZLJGH');
-            req.setHeader('Content-Type', 'application/x-www-form-urlencoded');
             String payload = 'type=alipay&flow=redirect&redirect[return_url]='+baseUrl+'&amount='+String.valueOf(total)+'&currency='+currencyISOCode;
-            req.setBody(payload);
-            Http http = new Http();
-            HttpResponse resp = http.send(req);
+
+            HttpResponse resp = StripeHTTPExecutor.executeRequest('POST','/sources',payload);
             Map<String, Object> responseBody = ( Map<String, Object> ) JSON.deserializeUntyped(resp.getBody());
 
             FDService.ImplementationOverride.overrideContextImplementation('Finance', 'EPayment', EPayment.class.getName());
