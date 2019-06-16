@@ -13,6 +13,10 @@ In the Fonteva Services platform developers can extend the wrapper classes.
         @AuraEnabled
         global String stripeClientSecret;
     ```
+    
+    [Here is an example](WrapperOverrides/main/default/classes/EPayment.cls) that contains new custom fields that will 
+    be auto mapped. Wrappers can be overridden using global overrides or contextual overrides. To see this class
+    in use with the contextual override see [class] in Payment Engine example.
 ## License
  
 The MIT License (MIT)

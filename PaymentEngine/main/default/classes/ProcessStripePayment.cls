@@ -25,11 +25,11 @@ public inherited sharing class ProcessStripePayment {
 
     public PageReference processPayment() {
         try{
-        Id recordId = Framework.PageUtils.getIdParam('recordId');
-        String clientSecret = Framework.PageUtils.getParam('client_secret');
-        String source = Framework.PageUtils.getParam('source');
-        Map<String,Object> sourceMap = PaymentService_CustomGateway.getSourceObj(source);
-        String status = (String)sourceMap.get('status');
+            Id recordId = Framework.PageUtils.getIdParam('recordId');
+            String clientSecret = Framework.PageUtils.getParam('client_secret');
+            String source = Framework.PageUtils.getParam('source');
+            Map<String,Object> sourceMap = PaymentService_CustomGateway.getSourceObj(source);
+            String status = (String)sourceMap.get('status');
             if (status.equalsIgnoreCase('chargeable')) {
                 FDService.PaymentResponse response = (FDService.PaymentResponse)processStrPayment(recordId,source,'USD');
                 PageReference ref = new PageReference('/'+response.receiptId);
@@ -82,9 +82,7 @@ public inherited sharing class ProcessStripePayment {
     @AuraEnabled
     public static Object createSource(String epaymentId,Decimal total,String currencyISOCode) {
         try {
-            FDService.ImplementationOverride.overrideContextImplementation('Finance', 'EPayment', EPayment.class.getName());
             String baseUrl =  Url.getOrgDomainUrl().toExternalForm()+ Page.PaymentProcessing.getUrl()+'?recordId='+epaymentId;
-            System.debug(baseUrl);
             HttpRequest req = new HttpRequest();
             req.setTimeout(120000);
             req.setEndpoint(PaymentService_CustomGateway.BASE_URL+'/sources');
@@ -95,9 +93,9 @@ public inherited sharing class ProcessStripePayment {
             req.setBody(payload);
             Http http = new Http();
             HttpResponse resp = http.send(req);
-            System.debug(resp.getBody());
             Map<String, Object> responseBody = ( Map<String, Object> ) JSON.deserializeUntyped(resp.getBody());
 
+            FDService.ImplementationOverride.overrideContextImplementation('Finance', 'EPayment', EPayment.class.getName());
             EPayment epSObj = (EPayment)FDService.EPayment.getInstance();
             epSObj.id = epaymentId;
             epSObj.stripeClientSecret = (String)responseBody.get('client_secret');
