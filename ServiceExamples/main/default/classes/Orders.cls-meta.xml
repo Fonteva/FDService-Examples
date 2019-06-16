@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApexClass xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>45.0</apiVersion>
-    <packageVersions>
-        <majorNumber>85</majorNumber>
-        <minorNumber>3</minorNumber>
-        <namespace>FDService</namespace>
-    </packageVersions>
-    <packageVersions>
-        <majorNumber>77</majorNumber>
-        <minorNumber>8</minorNumber>
-        <namespace>OrderApi</namespace>
-    </packageVersions>
     <status>Active</status>
 </ApexClass>

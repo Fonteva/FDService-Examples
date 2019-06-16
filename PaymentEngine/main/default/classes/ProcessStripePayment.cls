@@ -97,11 +97,13 @@ public inherited sharing class ProcessStripePayment {
             HttpResponse resp = http.send(req);
             System.debug(resp.getBody());
             Map<String, Object> responseBody = ( Map<String, Object> ) JSON.deserializeUntyped(resp.getBody());
-            OrderApi__EPayment__c epSObj = new OrderApi__EPayment__c();
-            epSObj.Id = epaymentId;
-            epSObj.Stripe_Client_Secret__c = (String)responseBody.get('client_secret');
-            epSObj.Stripe_Source_Id__c = (String)responseBody.get('id');
-            upsert epSObj;
+
+            EPayment epSObj = (EPayment)FDService.EPayment.getInstance();
+            epSObj.id = epaymentId;
+            epSObj.stripeClientSecret = (String)responseBody.get('client_secret');
+            epSObj.stripeSourceId = (String)responseBody.get('id');
+            FDService.EPaymentService.getInstance().mutate(new List<FDService.EPayment>{epSObj});
+
             Map<String,Object> redirectObj = (Map<String,Object>)responseBody.get('redirect');
             return redirectObj.get('url');
         }
