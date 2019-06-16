@@ -3,7 +3,7 @@
 In the Fonteva Services platform developers can extend/overwrite the service/wrapper classes. This section will outline both
 overwriting/extending and just generally using our services platform.
 
-1. ##### Creating An Order And Adding Order Lines
+1. ##### Atomic Action Services
     Using services you are able to create a Order record and insert multiple levels of order lines in one DML. The class
     [Orders](ServiceExamples/main/default/classes/Orders.cls) will outline how to create an order and add order lines. 
     The example will create order lines that are parent -> child -> grandchild depth in one DML. When they are added
