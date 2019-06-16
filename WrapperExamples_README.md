@@ -16,7 +16,7 @@ In the Fonteva Services platform developers can extend the wrapper classes.
     
     [Here is an example](WrapperOverrides/main/default/classes/EPayment.cls) that contains new custom fields that will 
     be auto mapped. Wrappers can be overridden using global overrides or contextual overrides. To see this class
-    in use with the contextual override see [class] in Payment Engine example.
+    in use with the contextual override see [class](https://github.com/Fonteva/FDService-Examples/blob/464334774dd2d98557d208dde0c6fa088a525ec9/PaymentEngine/main/default/classes/ProcessStripePayment.cls#L91-L96) in Payment Engine example.
 ## License
  
 The MIT License (MIT)
