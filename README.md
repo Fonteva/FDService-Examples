@@ -4,7 +4,7 @@
 
 ### [Payment Engine](PaymentEngine_README.md)
    This section will outline how to extend/overwrite the Fonteva Payment framework. Many folks have requirements
-   beyond what can be be supported out of the box and this engine will allow developers to fulfill that requirement.
+   beyond what is incuded in the base product. This engine will allow developers to fulfill that requirement.
    Included in this repo are full code examples that can be directly deployed.
 
 ### [Service Examples](ServiceExamples_README.md)
