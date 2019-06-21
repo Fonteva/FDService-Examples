@@ -1,4 +1,5 @@
 # Spark Plugs
 
-In the Fonteva Services platform developers can extend/overwrite the callouts to the payment processor.  
-This section will outline different ways to to use the Payment Engine. 
+On the Fonteva Platform, this feature allows the ability to display custom Lightning components in the various
+areas to allow for a custom flow. The platform allows the ability to display multiple components on each extension
+poing.
