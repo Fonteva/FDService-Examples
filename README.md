@@ -16,5 +16,5 @@
    wrappers for any custom fields added outside of the platform.
    
 ### [Spark Plugs Examples](SparkPlugs_README.md)
-   Spark Plugs allows the ability to provide custom UI inside a Fonteva Platform flow. This can be done seamlessly in 
-   multiple locations. Example will show what the Lightning component needs to look like and the CMT (Custom Metadata Type).
+   Spark Plugs enable custom UI inside a Fonteva Platform flow. This can be done seamlessly in 
+   multiple locations. Examples will show what the Lightning Component needs to look like and the CMT (Custom Metadata Type).
