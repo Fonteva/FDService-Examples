@@ -1,0 +1,7 @@
+<aura:component description="SparkPlugExample" implements="FDService:SparkPlugComponentInterface" access="global">
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	<aura:registerEvent type="FDService:SparkPlugCompleteEvent" name="SparkPlugCompleteEvent"/>
+	<aura:registerEvent type="FDService:SparkPlugLoadedEvent" name="SparkPlugLoadedEvent"/>
+	 Demo Spark Plug!!!!
+	<lightning:button variant="brand" label="Submit" onclick="{! c.handleClick }" />
+</aura:component>
