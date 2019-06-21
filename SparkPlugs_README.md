@@ -26,7 +26,7 @@ on the item detail page. The following things are needed:
 to the component. The component needs to be global and implement `FDService:SparkPlugComponentInterface`. Once that is done
 this component is ready to use. [Spark Plug Example](SparkPlugs/main/default/aura/SparkPlugExample/SparkPlugExample.cmp).
 In this component there is a few events that are used. The are explained below:
-    * `FDService:SparkPlugLoadedEvent` : This event should be fired when the lightning component has fully loaded to hide the loader.
+    * `FDService:SparkPlugLoadedEvent`: This event should be fired when the lightning component has fully loaded to hide the loader.
     * `FDService:SparkPlugCompleteEvent`: This event should be fired when the lightning component has completed its
     work. This will instruct the container to show the next component or hide the container if no components are left to
     display.
