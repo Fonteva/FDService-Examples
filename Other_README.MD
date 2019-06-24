@@ -12,4 +12,9 @@ There are many things you can do on the Fonteva Platform that are documented her
        Framework.Dispatcher.disableTriggerInContext.put(OBJECT_NAME,false);
     ``` 
     Replace `OBJECT_NAME` with the full api name of the SObject. The second parameter is a Boolean to disable/enable the
-    triggers.
+    triggers. Full working example:
+    ```apex
+       Framework.Dispatcher.disableTriggerInContext.put('OrderApi__Item__c',true);
+       update items;
+       Framework.Dispatcher.disableTriggerInContext.put('OrderApi__Item__c',false);
+    ```
