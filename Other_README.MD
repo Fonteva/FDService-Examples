@@ -1,10 +1,10 @@
 # Other Examples
 
-There are many things you can do on the Fonteva Platform that are documented here.
+Other examples of actions you can perform with the FOnteva Platform are listed below:
 
 1. ##### Disable Triggers Contextually
-    When triggers are executing sometimes there is a need to disable trigger because either they are not needed to run
-    or they will cause the system to hit the governor limit. To toggle this functionality it only requires a line of code.
+    Sometimes a trigger needs to be disabled either because it is not needed to run
+    or it will cause the system to hit the governor limit. Toggling this functionality only requires a line of code.
     Wrap your DML insert with these statements:
     ```apex
        Framework.Dispatcher.disableTriggerInContext.put(OBJECT_NAME,true);
