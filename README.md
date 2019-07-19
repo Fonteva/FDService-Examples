@@ -20,5 +20,5 @@
    multiple locations. Examples will show what the Lightning Component needs to look like and the CMT (Custom Metadata Type).
 
 ### [Other Examples](Other_README.MD)
-   This section will outline how to do other miscellaneous actions on the Fonteva Platform such as contextually disabling
+   This section outlines other miscellaneous actions on the Fonteva Platform, such as contextually disabling
    triggers.
